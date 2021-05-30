@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{%block js%}
+      <script type="text/javascript">
+      $(document).ready(function() {
+        $("#error").hide();
+        $("#error2").hide();
+        $("#error3").hide();
+        $("#error4").hide();
+        $("#error5").hide();
+        $("#formulario").submit(function(){
+            var msj = " ";
+              if($("#nombre").val().trim().length==0){
+              msj="El nombre está en blanco";
+              $("#error").html(msj);
+              $("#error").show();
+              event.preventDefault();
+            }
+            if($("#email").val().trim().length==0){
+              msj="El email está en blanco";
+              $("#error2").html(msj);
+              $("#error2").show();
+              event.preventDefault();
+            }
+            if($("#rut").val().trim().length==0){
+              msj="El rut está en blanco";
+              $("#error3").html(msj);
+              $("#error3").show();
+              event.preventDefault();
+            }
+            if($("#ciudad").val().trim().length==0){
+              msj="La ciudad están en blanco";
+              $("#error4").html(msj);
+              $("#error4").show();
+              event.preventDefault();
+            }
+
+            if( $("#textarea").val().trim().length<50  ){
+                msj="El mensaje es muy corto";
+                $("#error5").html(msj);
+                $("#error5").show();
+                Event.preventDefault();
+              }
+
+
+        });
+      })
+      </script>  
+      {%endblock%}
+ {% block body%}
+<section class="container col-md-8" style="margin:auto;font-size: 18px; border: rgb(196, 192, 192) solid;border-width: 1px; padding: 30px">
+  <h3>Contacto</h3>
+  <p ><span style="font-weight: bolder ;">Correo:</span>  franci.arayag@duocuc.cl</p> 
+  <p ><span style="font-weight: bolder ;">Whatsapp:</span> +56 9 4558 8693</p> 
+</section>
+<br>
+<form method="POST" id="formulario" class="row g-3 container col-md-8" style="margin:auto;font-size: 20px; border: rgb(196, 192, 192) solid;border-width: 1px; padding: 30px">
+  <div class="col-md-12">
+    <label  class="form-label">Nombre completo</label>  
+    <input type="text" class="form-control" placeholder="Ingrese nombre completo"  id="nombre">
+    <div id="error" class="alert alert-danger col-md-4" width="70px" role="alert"></div>
+  </div>
+
+  <div class="col-12">
+    <label for="inputEmail4" class="form-label">Correo Electrónico</label>   
+    <input type="email" class="form-control"  placeholder="Ingrese su correo electrónico"  id="email">
+    <div id="error2" class="alert alert-danger col-md-4" role="alert"></div>
+  </div>
+  <section>
+  <div class="col-md-12">
+    <label  class="form-label">Ingrese RUT/Pasaporte</label> 
+    <input type="text" class="form-control" placeholder="Ingrese RUT/Pasaporte" id="rut" >
+    <div id="error3" class="alert alert-danger " role="alert"></div>
+  </div>
+  <div class="form-check col-md-5 " style="display: inline-flex;">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+    <label class="form-check-label" for="flexRadioDefault1">
+      RUT
+    </label>
+  </div>
+  <div class="form-check col-md-5" style="display: inline-flex;">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+    <label class="form-check-label" for="flexRadioDefault2">
+      Pasaporte
+    </label>
+  </div>
+</section>
+  <div class="col-md-4" >
+    <label  class="form-label" style="overflow: hidden;white-space: nowrap; text-overflow: ellipsis;">Número de teléfono (Opcional)</label>
+    <input type="tel" class="form-control" placeholder="Ingrese número telefónico" >
+  </div>
+  <div class="col-md-4" >
+    <label  class="form-label">Ciudad de residencia</label>   
+    <input type="text" class="form-control" placeholder="Ingrese ciudad de residencia" width="100%"  id="ciudad">
+    <div id="error4" class="alert alert-danger" role="alert"></div>
+  </div>
+
+  <div class="mb-3 col-12">
+    <label  class="form-label">Señala en lo que te gustaria participar en la ONG</label>
+    <textarea class="form-control" rows="5" id="textarea"></textarea>
+    <div id="error5" class="alert alert-danger" role="alert"></div>
+  </div>
+  <div class="col-md-6">
+    <button type="submit" class="btn btn-primary" style="width: 100%; background-color: rgb(5, 150, 5); border: none;" id="enviar">Enviar </button>
+  </div>
+  <div class="col-md-6">
+    <button type="reset" class="btn btn-secondary" style="width: 100%; border: none;" id="limpiar">Limpiar formulario </button>
+  </div>
+</form>
+
+{%endblock%}

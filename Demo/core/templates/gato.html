@@ -1,0 +1,53 @@
+
+{% extends 'base.html' %}
+
+    {% block body %}
+        <section class="container col-md-12" style="text-align: justify;" >
+          <a href="{% url 'gato1' %}">
+        <div class="card col-md-3" style="width: 18rem;margin: 5px; display:inline-flex;">
+          <img src="../static/img/gatos_0.jpg" height="200px" class="card-img-top" alt="...">
+          <div class="card-body">
+          </a>
+            <h5 class="card-title" style="text-align: center;">Ricardito</h5>
+          </div>
+        </div>
+
+        <a href="{% url 'gato2' %}">
+        <div class="card col-md-3" style="width: 18rem;margin: 5px;display: inline-flex;">
+          <img src="../static/img/gatos_1.jpg" height="200px" class="card-img-top" alt="...">
+          <div class="card-body">
+          </a>
+            <h5 class="card-title" style="text-align: center;">Chimultrufia</h5>
+           
+          </div>
+        </div>
+
+        <a href="{% url 'gato3' %}">
+        <div class="card col-md-3" style="width: 18rem;margin: 5px;display: inline-flex;">
+          <img src="../static/img/gatos_2.jpg" height="200px" class="card-img-top" alt="...">
+          <div class="card-body">
+          </a>
+            <h5 class="card-title" style="text-align: center;">Ojitos de piscina</h5>
+          </div>
+        </div>
+
+        <a href="{% url 'gato4' %}">
+          <div class="card col-md-3" style="width: 18rem;margin: 5px;display: inline-flex;">
+            <img src="../static/img/gatos_3.jpg" height="200px" class="card-img-top" alt="...">
+            <div class="card-body">
+            </a>
+              <h5 class="card-title" style="text-align: center;">Mimilona</h5>
+            </div>
+          </div>
+
+          <a href="{% url 'gato5' %}">
+            <div class="card col-md-3" style="width: 18rem;margin: 5px;display: inline-flex;">
+              <img src="../static/img/gatos_4.jpg" height="200px" class="card-img-top" alt="...">
+              <div class="card-body">
+              </a>
+                <h5 class="card-title" style="text-align: center;">Elshale</h5>
+              </div>
+            </div>
+
+      </section>
+{% endblock %}
