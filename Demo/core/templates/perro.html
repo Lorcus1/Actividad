@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-      
+{% load static %}
 {% block body%}
       <div class="container">   
     <a href="{% url 'agregarPerro' %}"><button type="button" class="btn btn-primary" style="margin-bottom: 2%;margin-top: 2%;">Agregar perro</button></a>    
@@ -12,7 +12,9 @@
               </a>
               <div class="card-body">
                 <p class="card-text">{{Perro.Nombre_Perro}}</p>
+                <p class="card-text">{{Perro.Nro_chip}}</p>
               </div>
+              <!--  <a class="btn btn-success" href="{% url 'FormularioModPerro' perro.Nro_chip %}" role="button">Editar</a>-->
             </div> 
           </div>
           {% endfor %}

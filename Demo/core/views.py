@@ -25,23 +25,70 @@ def agregarPerro(request):
     razas = Raza.objects.all()
     contexto = {'razas': razas}
     return render(request, 'agregarPerro.html',contexto)
+
 def añadirPerro(request):
-    Nro_chip = request.POST.get('nro_chip','')
-    Nombre_Perro = request.POST.get('nombre','')
-    Edad_Perro = request.POST.get('edad','')
+    Nro_chip = request.POST.get('Nro_chip','')
+    Nombre_Perro = request.POST.get('Nombre_Perro','')
+    Edad_Perro = request.POST.get('Edad_Perro','')
     id_raza = request.POST.get('Raza','')
     Sexo = request.POST.get('Sexo','')
     Adapt = request.POST.get('Adapt','')
-    C_ninos = request.POST.get('c_ninos','')
-    C_perros = request.POST.get('c_perros','')
-    C_gatos = request.POST.get('c_gatos','')
-    Energia = request.POST.get('energia','')
+    C_ninos = request.POST.get('C_ninos','')
+    C_perros = request.POST.get('C_perros','')
+    C_gatos = request.POST.get('C_gatos','')
+    Energia = request.POST.get('Energia','')
     Esteril = request.POST.get('Esteril','')
     imagen = request.FILES.get('imagen','')
 
     raza= Raza.objects.get(id=id_raza)
 
     perro = Perro(Nro_chip=Nro_chip,Nombre_Perro=Nombre_Perro,Edad_Perro=Edad_Perro,Raza=raza, Sexo=Sexo,Adapt=Adapt,C_ninos=C_ninos,C_perros=C_perros,C_gatos=C_gatos,Energia=Energia,Esteril=Esteril,imagen=imagen)
+    perro.save()
+
+    return redirect('perro')
+
+def FormularioModPerro (request,Nro_chip): 
+    perro =  Perro.objects.get(Nro_chip=Nro_chip)
+    razas = Raza.objects.all()
+    contexto = {'razas': razas, 'perro':perro}
+
+    return render(request, 'modificarPerro.html',contexto)
+
+def modificarPerro(request, Nro_chip):
+    
+
+    Nro_chip = request.POST.get('Nro_chip','')
+    Nombre_Perro = request.POST.get('Nombre_Perro','')
+    Edad_Perro = request.POST.get('Edad_Perro','')
+    id_raza = request.POST.get('Raza','')
+    Sexo = request.POST.get('Sexo','')
+    Adapt = request.POST.get('Adapt','')
+    C_ninos = request.POST.get('C_ninos','')
+    C_perros = request.POST.get('C_perros','')
+    C_gatos = request.POST.get('C_gatos','')
+    Energia = request.POST.get('Energia','')
+    Esteril = request.POST.get('Esteril','')
+    imagen = request.FILES.get('imagen','')
+
+
+    
+    perro = Perro.objects.get(Nro_chip=Nro_chip)
+    perro.Nombre_Perro= Nombre_Perro
+    perro.Edad_Perro=Edad_Perro
+    perro.id_raza=raza
+    perro.Sexo = Sexo
+    perro.Adapt = Adapt
+    perro.C_ninos = C_ninos
+    perro.C_perros =C_perros
+    perro.C_gatos = C_gatos
+    perro.Energia = Energia
+    perro.Esteril = Esteril
+
+    print(imagen)
+        
+    if(imagen!=''):
+        perro.imagen = imagen
+
     perro.save()
 
     return redirect('perro')
