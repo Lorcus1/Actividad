@@ -1,52 +1,26 @@
 {% extends 'base.html' %}
       
-      {% block body%}
-        <section class="container col-md-12" style="text-align: justify;" >
-          <a href="{% url 'perro1' %}">
-        <div class="card col-md-3" style="width: 18rem; display:inline-flex;">
-          <img src="../static/img/perros_0.jpg" height="200px" class="card-img-top" alt="...">
-          <div class="card-body">
-          </a>
-            <h5 class="card-title" style="text-align: center;">Doge</h5>
-          </div>
-        </div>
-
-        <a href="{% url 'perro2' %}">
-        <div class="card col-md-3" style="width: 18rem;display: inline-flex;">
-          <img src="../static/img/perros_1.jpg" height="200px" class="card-img-top" alt="...">
-          <div class="card-body">
-          </a>
-            <h5 class="card-title" style="text-align: center;">Máximo Max MaxSteel</h5>
-           
-          </div>
-        </div>
-
-        <a href="{% url 'perro3' %}">
-        <div class="card col-md-3" style="width: 18rem;display: inline-flex;">
-          <img src="../static/img/perros_2.jpg" height="200px" class="card-img-top" alt="...">
-          <div class="card-body">
-          </a>
-            <h5 class="card-title" style="text-align: center;">Chocolate</h5>
-          </div>
-        </div>
-
-        <a href="{% url 'perro4' %}">
-          <div class="card col-md-3" style="width: 18rem;display: inline-flex;">
-            <img src="../static/img/perros_3.jpg" height="200px" class="card-img-top" alt="...">
-            <div class="card-body">
-            </a>
-              <h5 class="card-title" style="text-align: center;">Xikita</h5>
-            </div>
-          </div>
-
-          <a href="{% url 'perro5' %}">
-            <div class="card col-md-3" style="width: 18rem;display: inline-flex;">
-              <img src="../static/img/perros_4.jpg" height="200px" class="card-img-top" alt="...">
-              <div class="card-body">
+{% block body%}
+      <div class="container">   
+    <a href="{% url 'agregarPerro' %}"><button type="button" class="btn btn-primary" style="margin-bottom: 2%;margin-top: 2%;">Agregar perro</button></a>    
+        <div class="row">
+          {% for Perro in perros %}
+          <div class="col-3">
+            <div class="card" style="width: 18rem; display:inline-flex;">
+              <a href="{% url 'perro' %}">
+                <img src="/static/media/{{Perro.imagen}}" height="200px" class="card-img-top" alt="Perro 1">
               </a>
-                <h5 class="card-title" style="text-align: center;">Moñito</h5>
+              <div class="card-body">
+                <p class="card-text">{{Perro.Nombre_Perro}}</p>
               </div>
-            </div>
+            </div> 
+          </div>
+          {% endfor %}
+        </div>
+    </div>
+{% endblock%}
 
-      </section>
-      {% endblock%}
+
+
+
+
