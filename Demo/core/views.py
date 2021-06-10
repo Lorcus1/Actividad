@@ -75,15 +75,14 @@ def modificarPerro(request, Nro_chip):
     perro = Perro.objects.get(Nro_chip=Nro_chip)
     perro.Nombre_Perro= Nombre_Perro
     perro.Edad_Perro=Edad_Perro
-    perro.id_raza=raza
+    perro.id_raza=Raza
     perro.Sexo = Sexo
     perro.Adapt = Adapt
     perro.C_ninos = C_ninos
-    perro.C_perros =C_perros
+    perro.C_perros = C_perros
     perro.C_gatos = C_gatos
     perro.Energia = Energia
     perro.Esteril = Esteril
-
     print(imagen)
         
     if(imagen!=''):
@@ -92,6 +91,14 @@ def modificarPerro(request, Nro_chip):
     perro.save()
 
     return redirect('perro')
+
+
+def eliminarPerro (request, Nro_chip):
+    perro = Perro.objects.get(Nro_chip=Nro_chip)
+    perro.delete()
+
+    return redirect('perro')
+
 
 def gato(request):
     return render(request, 'gato.html',{})

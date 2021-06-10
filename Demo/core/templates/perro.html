@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block body%}
       <div class="container">   
     <a href="{% url 'agregarPerro' %}"><button type="button" class="btn btn-primary" style="margin-bottom: 2%;margin-top: 2%;">Agregar perro</button></a>    
@@ -7,20 +8,25 @@
           {% for Perro in perros %}
           <div class="col-3">
             <div class="card" style="width: 18rem; display:inline-flex;">
-              <a href="{% url 'perro' %}">
+              <a href="{% url 'perro1' %}">
                 <img src="/static/media/{{Perro.imagen}}" height="200px" class="card-img-top" alt="Perro 1">
               </a>
               <div class="card-body">
                 <p class="card-text">{{Perro.Nombre_Perro}}</p>
                 <p class="card-text">{{Perro.Nro_chip}}</p>
               </div>
-              <a class="btn btn-success" href="{% url 'FormularioModPerro' Perro.Nro_chip %}" role="button">Editar</a>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-center" style="margin-bottom: 5px;">
+              <a class="btn btn-success col-md-5 " href="{% url 'FormularioModPerro' Perro.Nro_chip %}" role="button" >Editar</a>
+              <a class="btn btn-danger col-md-5 " href="{% url 'eliminarPerro' Perro.Nro_chip %}" role="button"  >Eliminar</a>
+            </div>
             </div> 
           </div>
           {% endfor %}
         </div>
     </div>
+
 {% endblock%}
+
 
 
 

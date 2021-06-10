@@ -14,7 +14,7 @@ class Perro (models.Model):
     Nombre_Perro= models.CharField(max_length=99)
     Edad_Perro = models.IntegerField(null=True)
     Raza     = models.ForeignKey(Raza, on_delete=models.CASCADE)
-    Sexo     = models.CharField(max_length=99,default=True)
+    Sexo     = models.CharField(max_length=99)
     Adapt    = models.CharField(max_length=2)
     C_ninos  = models.CharField(max_length=2)
     C_perros = models.CharField(max_length=2)

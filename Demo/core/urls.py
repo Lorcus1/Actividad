@@ -4,6 +4,7 @@ from core.views import añadirPerro
 from core.views import nosotros
 from core.views import contacto
 from core.views import gato
+from core.views import eliminarPerro
 
 from django.contrib import admin
 from django.urls import path, include
@@ -19,6 +20,11 @@ urlpatterns = [
     path('perro/FormularioModPerro/<int:Nro_chip>/', FormularioModPerro, name='FormularioModPerro'),
     path('perro/mod/<int:Nro_chip>/', modificarPerro, name='modificarPerro'),
 
+     path('perro/del/<int:Nro_chip>/', eliminarPerro, name='eliminarPerro'),
+
+
+    path('perro/1', views.perro1, name='perro1'),
+
     path('gato/', gato, name='gato'),
     path('contacto/', contacto, name='contacto'),
     path('nosotros/', nosotros, name='nosotros')
@@ -26,8 +32,6 @@ urlpatterns = [
 ]
 
 """ ,
-path('perro/FormularioModPerro/<int:Nro_chip>/', FormularioModPerro, name='FormularioModPerro'),
-path('perro/mod', modificarPerro, name='modificarPerro'),
     path('perro/1', views.perro1, name='perro1'),
     path('perro/2', views.perro2, name='perro2'),
     path('perro/3', views.perro3, name='perro3'),

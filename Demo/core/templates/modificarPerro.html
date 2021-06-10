@@ -4,7 +4,7 @@
 {%block body%}
 
     <div class="container" style="padding-left: 10%; padding-right: 10%;padding-top: 1%;">
-        <h2>Agregar perros</h2>
+        <h2>Modificar a {{perro.Nombre_Perro}} ({{perro.Nro_chip}})</h2>
         <form action="{% url 'modificarPerro' perro.Nro_chip %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="mb-2">
@@ -35,56 +35,90 @@
                 <label for="Sexo" class="form-label">Sexo :</label>
                 <select class="form-select " id="Sexo" name="Sexo">
                     {%if perro.Sexo == 'Macho'%}
-                    <option value="Macho">{{perro.Sexo}}</option>
-                    {% else %}
-                    <option value="Hembra">{{perro.Sexo}}</option>
-                    {%endif%}
+                    <option value="{{perro.Sexo}}" selected >{{perro.Sexo}}</option>     
+                    <option value="Hembra">Hembra</option>
+                    {%else%}
+                    <option value="Macho">Macho</option> 
+                    <option value="{{perro.Sexo}}" selected >{{perro.Sexo}}</option>  
+                    {%endif%}  
                 </select>
             </div>
             <div class="mb-2"> 
                 <label for="Adapt" class="form-label">Se adapta a departamento :</label>
                 <select class="form-select " id="Adapt" name="Adapt">
-                    {%if perro.Adapt == 'Si'%}
-                    <option value="Si" selected>{{perro.Adapt}}</option>
-                    {% else %}
-                    <option value="No">{{perro.Adapt}}</option>
+                    {% if perro.Adapt == 'Si'%}
+                    <option value="{{perro.Adapt}}" selected>{{perro.Adapt}}</option>
+                    <option value="No">No</option>
+                    {%else%}
+                    <option value="Si">Si</option>
+                    <option value="{{perro.Adapt}}" selected>{{perro.Adapt}}</option>
                     {%endif%}
                 </select>
             </div>
             <div class="mb-2"> 
                 <label for="C_ninos" class="form-label">Convive con niños :</label>
                 <select class="form-select " id="C_ninos" name="C_ninos">
-                    <option value="Si">Si</option>
+                    {% if perro.C_ninos == 'Si'%}
+                    <option value="{{perro.C_ninos}}" selected>{{perro.C_ninos}}</option>
                     <option value="No">No</option>
+                    {%else%}
+                    <option value="Si">Si</option>
+                    <option value="{{perro.C_ninos}}" selected>{{perro.C_ninos}}</option>
+                    {%endif%}
                 </select>
             </div>
             <div class="mb-2"> 
                 <label for="C_perros" class="form-label">Convive con perros :</label>
                 <select class="form-select " id="C_perros" name="C_perros">
-                    <option value="Si">Si</option>
+                    <  {% if perro.C_perros == 'Si'%}
+                    <option value="{{perro.C_perros}}" selected>{{perro.C_perros}}</option>
                     <option value="No">No</option>
+                    {%else%}
+                    <option value="Si">Si</option>
+                    <option value="{{perro.C_perros}}" selected>{{perro.C_perros}}</option>
+                    {%endif%}
                 </select>
             </div>
             <div class="mb-2"> 
                 <label for="C_gatos" class="form-label">Convive con gatos :</label>
                 <select class="form-select " id="C_gatos" name="C_gatos">
-                    <option value="Si">Si</option>
+                    <  {% if perro.C_gatos == 'Si'%}
+                    <option value="{{perro.C_gatos}}" selected>{{perro.C_gatos}}</option>
                     <option value="No">No</option>
+                    {%else%}
+                    <option value="Si">Si</option>
+                    <option value="{{perro.C_gatos}}" selected>{{perro.C_gatos}}</option>
+                    {%endif%}
                 </select>
             </div>
             <div class="mb-2"> 
                 <label for="Energia" class="form-label">Nivel de energía:</label>
                 <select class="form-select " id="Energia" name="Energia">
-                    <option value="Alta">Alta</option>
+                    {% if perro.Energia == 'Alta'%}
+                    <option value="{{perro.Energia}}" selected>{{perro.Energia}}</option>
                     <option value="Media">Media</option>
                     <option value="Baja">Baja</option>
+                    {% elif perro.Energia == 'Media' %}
+                    <option value="Alta">Alta</option>
+                    <option value="{{perro.Energia}}" selected>{{perro.Energia}}</option>
+                    <option value="Baja">Baja</option>
+                    {%else%}
+                    <option value="Alta">Alta</option>
+                    <option value="Media">Media</option>
+                    <option value="{{perro.Energia}}" selected>{{perro.Energia}}</option>
+                    {%endif%}
                 </select>
             </div>
             <div class="mb-2"> 
                 <label for="Esteril" class="form-label">Estirilizado :</label>
                 <select class="form-select " id="Esteril" name="Esteril">
-                    <option value="Si">Si</option>
+                    {% if perro.Esteril == 'Si'%}
+                    <option value="{{perro.Esteril}}" selected>{{perro.Esteril}}</option>
                     <option value="No">No</option>
+                    {%else%}
+                    <option value="Si">Si</option>
+                    <option value="{{perro.Esteril}}" selected>{{perro.Esteril}}</option>
+                    {%endif%}
                 </select>
             </div>
             <div class="mb-2">
@@ -92,8 +126,9 @@
                 <input class="form-control" type="file" id="imagen" name="imagen">
               </div>
             <div class="mb-2">
-                <button type="submit" class="btn btn-success">Agregar</button>
+                <button type="submit" class="btn btn-success col-md-12" >Realizar cambios</button>
             </div>
         </form>
     </div>
+    
 {%endblock%}
