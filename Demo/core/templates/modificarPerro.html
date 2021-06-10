@@ -5,7 +5,7 @@
 
     <div class="container" style="padding-left: 10%; padding-right: 10%;padding-top: 1%;">
         <h2>Agregar perros</h2>
-        <form action="#" method="POST" enctype="multipart/form-data">
+        <form action="{% url 'modificarPerro' perro.Nro_chip %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="mb-2">
                 <label for="Nro_chip" class="form-label">Nro Chip :</label>
@@ -36,7 +36,7 @@
                 <select class="form-select " id="Sexo" name="Sexo">
                     {%if perro.Sexo == 'Macho'%}
                     <option value="Macho">{{perro.Sexo}}</option>
-                    {%Else%}
+                    {% else %}
                     <option value="Hembra">{{perro.Sexo}}</option>
                     {%endif%}
                 </select>
@@ -45,8 +45,8 @@
                 <label for="Adapt" class="form-label">Se adapta a departamento :</label>
                 <select class="form-select " id="Adapt" name="Adapt">
                     {%if perro.Adapt == 'Si'%}
-                    <option value="Si">{{perro.Adapt}}</option>
-                    {%Else%}
+                    <option value="Si" selected>{{perro.Adapt}}</option>
+                    {% else %}
                     <option value="No">{{perro.Adapt}}</option>
                     {%endif%}
                 </select>

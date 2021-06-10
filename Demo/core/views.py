@@ -47,7 +47,7 @@ def añadirPerro(request):
 
     return redirect('perro')
 
-def FormularioModPerro (request,Nro_chip): 
+def FormularioModPerro(request,Nro_chip): 
     perro =  Perro.objects.get(Nro_chip=Nro_chip)
     razas = Raza.objects.all()
     contexto = {'razas': razas, 'perro':perro}
