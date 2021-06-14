@@ -1,4 +1,4 @@
-from core.views import modificarPerro
+from core.views import CreateUser, Deslogeo, Logeando, SignIn, SignUp, modificarPerro
 from core.views import FormularioModPerro
 from core.views import añadirPerro
 from core.views import nosotros
@@ -27,8 +27,16 @@ urlpatterns = [
 
     path('gato/', gato, name='gato'),
     path('contacto/', contacto, name='contacto'),
-    path('nosotros/', nosotros, name='nosotros')
- 
+    path('nosotros/', nosotros, name='nosotros'),
+    
+    #signin
+    path('signin/', SignIn, name='SignIn'),
+    path('signin/logeando/', Logeando, name='Logeando'),
+    path('signin/deslogeando/', Deslogeo, name='Deslogeo'),
+
+    path('signup/', SignUp, name='SignUp'),
+     path('signup/createuser', CreateUser, name='CreateUser'),
+
 ]
 
 """ ,

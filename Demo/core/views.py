@@ -1,5 +1,7 @@
 from core.models import Perro,Raza
 from django.shortcuts import render,redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -99,6 +101,48 @@ def eliminarPerro (request, Nro_chip):
 
     return redirect('perro')
 
+
+def SignIn(request):
+    contexto={}
+    return render(request,'signin.html',contexto)
+
+def Logeando(request):
+    username = request.POST.get('usuario','default')
+    password = request.POST.get('clave','default')
+
+    user = authenticate(request, username=username, password=password)
+
+    if user is not None:
+        login(request, user)
+        
+        return redirect('index')
+    else:
+        return redirect(SignIn)
+
+def Deslogeo(request):
+    logout(request)
+    return redirect ('index')
+
+def SignUp(request):
+    contexto={}
+    return render(request,'signup.html',contexto)
+
+def CreateUser(request):
+    contexto={}
+    username = request.POST.get('usuario','default')
+    email = request.POST.get('email','default')
+    password = request.POST.get('clave','default')
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        return redirect('SignUp')
+        messages.error(request, 'El usuario ya existe')
+    else:
+        user = User.objects.create_user(username, email, password)
+        return redirect('index')
+        user.save()
+
+
+    return render(request,'signin.html')
 
 def gato(request):
     return render(request, 'gato.html',{})
